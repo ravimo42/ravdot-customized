@@ -318,8 +318,8 @@ EditorThemeManager::ThemeConfiguration EditorThemeManager::_create_theme_config(
 				preset_contrast = 0.0;
 				preset_draw_extra_borders = true;
 			} else { // Default
-				preset_accent_color = Color(0.44, 0.73, 0.98);
-				preset_base_color = Color(0.21, 0.24, 0.29);
+				preset_accent_color = Color(0.60784313, 0.7490196078431373, 0.7490196078431373);
+				preset_base_color = Color(0.10196078431372549, 0.13725490196078433, 0.1450980392156863);
 				preset_contrast = config.default_contrast;
 			}
 
