@@ -8,4 +8,4 @@
 
 ## 2D and 3D cross-platform game engine forked from godot
 
-That's all to say, new theme with custom lightweight LLVM build config.
+That's all to say, new theme with custom lightweight LLVM build config optimized for 2D.
