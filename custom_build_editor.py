@@ -8,13 +8,13 @@ minizip="no"
 deprecated="no"
 vulkan="no"
 use_volk="no"
-disable_advanced_gui="yes"
-disable_navigation_3d="yes"
+#disable_advanced_gui="yes"
+#disable_navigation_3d="yes"
 touch="no"
 ######
 
 modules_enabled_by_default="no"
-module_regex_enabled="no"
+module_regex_enabled="yes"
 
 ######
 module_cvtt_enabled="yes"
