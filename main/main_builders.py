@@ -9,7 +9,7 @@ def make_splash(target, source, env):
     with methods.generated_wrapper(str(target[0])) as file:
         # Use a neutral gray color to better fit various kinds of projects.
         file.write(f"""\
-static const Color boot_splash_bg_color = Color(0.14, 0.14, 0.14);
+static const Color boot_splash_bg_color = Color(0.0, 0.0, 0.0);
 inline constexpr const unsigned char boot_splash_png[] = {{
 	{methods.format_buffer(buffer, 1)}
 }};
