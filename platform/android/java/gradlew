@@ -21,7 +21,8 @@
 ##  Gradle start up script for UN*X
 ##
 ##############################################################################
-
+export ANDROID_HOME="../../android-sdk"
+export JAVA_HOME="../../android-sdk/java"
 # Attempt to set APP_HOME
 # Resolve links: $0 may be a link
 PRG="$0"
