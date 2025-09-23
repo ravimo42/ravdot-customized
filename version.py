@@ -1,9 +1,9 @@
-short_name = "godot"
-name = "Godot Engine"
+short_name = "ravdot"
+name = "Ravdot Customized"
 major = 4
 minor = 5
 patch = 1
-status = "rc"
+status = "stable"
 module_config = ""
-website = "https://godotengine.org"
-docs = "4.5"
+website = ""
+docs = "latest"

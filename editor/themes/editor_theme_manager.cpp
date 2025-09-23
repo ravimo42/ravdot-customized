@@ -319,8 +319,8 @@ EditorThemeManager::ThemeConfiguration EditorThemeManager::_create_theme_config(
 				preset_contrast = 0.0;
 				preset_draw_extra_borders = true;
 			} else { // Default
-				preset_accent_color = Color(0.44, 0.73, 0.98);
-				preset_base_color = Color(0.21, 0.24, 0.29);
+				preset_accent_color = Color(0.60784313, 0.7490196078431373, 0.7490196078431373);
+				preset_base_color = Color(0.10196078431372549, 0.13725490196078433, 0.1450980392156863);
 				preset_contrast = config.default_contrast;
 			}
 
@@ -453,9 +453,9 @@ void EditorThemeManager::_create_shared_styles(const Ref<EditorTheme> &p_theme, 
 		p_theme->set_color("success_color", EditorStringName(Editor), p_config.success_color);
 		p_theme->set_color("warning_color", EditorStringName(Editor), p_config.warning_color);
 		p_theme->set_color("error_color", EditorStringName(Editor), p_config.error_color);
-#ifndef DISABLE_DEPRECATED // Used before 4.3.
+		#ifndef DISABLE_DEPRECATED // Used before 4.3.
 		p_theme->set_color("disabled_highlight_color", EditorStringName(Editor), p_config.highlight_disabled_color);
-#endif
+		#endif
 
 		// Only used when the Draw Extra Borders editor setting is enabled.
 		p_config.extra_border_color_1 = Color(0.5, 0.5, 0.5);
@@ -485,12 +485,12 @@ void EditorThemeManager::_create_shared_styles(const Ref<EditorTheme> &p_theme, 
 		p_theme->set_color("font_readonly_color", EditorStringName(Editor), p_config.font_readonly_color);
 		p_theme->set_color("font_placeholder_color", EditorStringName(Editor), p_config.font_placeholder_color);
 		p_theme->set_color("font_outline_color", EditorStringName(Editor), p_config.font_outline_color);
-#ifndef DISABLE_DEPRECATED // Used before 4.3.
+		#ifndef DISABLE_DEPRECATED // Used before 4.3.
 		p_theme->set_color("readonly_font_color", EditorStringName(Editor), p_config.font_readonly_color);
 		p_theme->set_color("disabled_font_color", EditorStringName(Editor), p_config.font_disabled_color);
 		p_theme->set_color("readonly_color", EditorStringName(Editor), p_config.font_readonly_color);
 		p_theme->set_color("highlighted_font_color", EditorStringName(Editor), p_config.font_hover_color); // Closest equivalent.
-#endif
+		#endif
 
 		// Icon colors.
 
@@ -1566,9 +1566,9 @@ void EditorThemeManager::_populate_standard_styles(const Ref<EditorTheme> &p_the
 		p_theme->set_constant("buttons_vertical_separation", "SpinBox", 0);
 		p_theme->set_constant("field_and_buttons_separation", "SpinBox", 2);
 		p_theme->set_constant("buttons_width", "SpinBox", 16);
-#ifndef DISABLE_DEPRECATED
+		#ifndef DISABLE_DEPRECATED
 		p_theme->set_constant("set_min_buttons_width_from_icons", "SpinBox", 1);
-#endif
+		#endif
 	}
 
 	// ProgressBar.
@@ -2307,9 +2307,9 @@ void EditorThemeManager::_populate_editor_styles(const Ref<EditorTheme> &p_theme
 		p_theme->set_color("prop_category", EditorStringName(Editor), prop_category_color);
 		p_theme->set_color("prop_section", EditorStringName(Editor), prop_section_color);
 		p_theme->set_color("prop_subsection", EditorStringName(Editor), prop_subsection_color);
-#ifndef DISABLE_DEPRECATED // Used before 4.3.
+		#ifndef DISABLE_DEPRECATED // Used before 4.3.
 		p_theme->set_color("property_color", EditorStringName(Editor), prop_category_color);
-#endif
+		#endif
 
 		// EditorInspectorCategory.
 
@@ -2902,15 +2902,15 @@ bool EditorThemeManager::is_generated_theme_outdated() {
 	if (outdated_cache_dirty) {
 		// TODO: We can use this information more intelligently to do partial theme updates and speed things up.
 		outdated_cache = EditorSettings::get_singleton()->check_changed_settings_in_group("interface/theme") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("interface/editor/font") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("interface/editor/main_font") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("interface/editor/code_font") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("editors/visual_editors") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("text_editor/theme") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("text_editor/help/help") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("docks/property_editor/subresource_hue_tint") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("filesystem/file_dialog/thumbnail_size") ||
-				EditorSettings::get_singleton()->check_changed_settings_in_group("run/output/font_size");
+		EditorSettings::get_singleton()->check_changed_settings_in_group("interface/editor/font") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("interface/editor/main_font") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("interface/editor/code_font") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("editors/visual_editors") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("text_editor/theme") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("text_editor/help/help") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("docks/property_editor/subresource_hue_tint") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("filesystem/file_dialog/thumbnail_size") ||
+		EditorSettings::get_singleton()->check_changed_settings_in_group("run/output/font_size");
 
 		// The outdated flag is relevant at the moment of changing editor settings.
 		callable_mp_static(&EditorThemeManager::_reset_dirty_flag).call_deferred();
