@@ -482,6 +482,8 @@ private:
 	bool previewing_cinema = false;
 	bool _is_node_locked(const Node *p_node) const;
 	void _preview_exited_scene();
+	void _preview_camera_property_changed();
+	void _update_centered_labels();
 	void _toggle_camera_preview(bool);
 	void _toggle_cinema_preview(bool);
 	void _init_gizmo_instance(int p_idx);
@@ -805,6 +807,7 @@ private:
 	HashMap<Control *, VSeparator *> context_toolbar_separators;
 
 	void _update_context_toolbar();
+	void _on_editor_settings_changed();
 
 	void _generate_selection_boxes();
 
@@ -971,6 +974,7 @@ public:
 	void update_grid();
 	void update_transform_gizmo();
 	void update_all_gizmos(Node *p_node = nullptr);
+	void update_gizmo_opacity();
 	void snap_selected_nodes_to_floor();
 	void select_gizmo_highlight_axis(int p_axis);
 	void set_custom_camera(Node *p_camera) { custom_camera = p_camera; }

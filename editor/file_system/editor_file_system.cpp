@@ -465,7 +465,7 @@ void EditorFileSystem::_scan_filesystem() {
 						fc.import_md5 = slices[5];
 						fc.import_dest_paths = slices[6].split("<*>");
 					}
-					fc.deps = split[8].strip_edges().split("<>");
+					fc.deps = split[8].strip_edges().split("<>", false);
 
 					file_cache[name] = fc;
 				}
@@ -1768,13 +1768,13 @@ void EditorFileSystem::_notification(int p_what) {
 						// Set first_scan to false before the signals so the function doing_first_scan can return false
 						// in editor_node to start the export if needed.
 						first_scan = false;
+						scanning_changes = false;
+						done_importing = true;
 						ResourceImporter::load_on_startup = nullptr;
 						if (changed) {
 							emit_signal(SNAME("filesystem_changed"));
 						}
 						emit_signal(SNAME("sources_changed"), sources_changed.size() > 0);
-						scanning_changes = false; // Changed to false here to prevent recursive triggering of scan thread.
-						done_importing = true;
 					}
 				} else if (!scanning && thread.is_started()) {
 					set_process(false);
@@ -3442,7 +3442,7 @@ bool EditorFileSystem::_should_skip_directory(const String &p_path) {
 
 	if (FileAccess::exists(p_path.path_join("project.godot"))) {
 		// Skip if another project inside this.
-		if (EditorFileSystem::get_singleton()->first_scan) {
+		if (EditorFileSystem::get_singleton() == nullptr || EditorFileSystem::get_singleton()->first_scan) {
 			WARN_PRINT_ONCE(vformat("Detected another project.godot at %s. The folder will be ignored.", p_path));
 		}
 		return true;
