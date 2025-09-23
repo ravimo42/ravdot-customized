@@ -8,15 +8,24 @@ minizip="no"
 deprecated="no"
 vulkan="no"
 use_volk="no"
-#disable_advanced_gui="yes"
-#disable_navigation_3d="yes"
 touch="yes"
+
+## Non-Editor
+#disable_navigation_3d="yes"
+#disable_3d="yes"
 ######
 
 modules_enabled_by_default="no"
-module_regex_enabled="yes"
 
 ######
+module_astcenc_enabled="yes" # For android
+module_etcpak_enabled="yes" # For android
+module_websocket_enabled="yes" # For networking, WebSocketPeer class
+module_multiplayer_enabled="yes" # For multiplayer
+module_enet_enabled="yes" # Required by multiplayer
+
+######
+module_regex_enabled="yes"
 module_cvtt_enabled="yes"
 module_etcpak_enabled="yes"
 module_freetype_enabled="yes"
