@@ -27,7 +27,6 @@ module_enet_enabled="yes" # Required by multiplayer
 ######
 module_regex_enabled="yes"
 module_cvtt_enabled="yes"
-module_etcpak_enabled="yes"
 module_freetype_enabled="yes"
 module_gdscript_enabled="yes"
 module_godot_physics_2d_enabled="yes"
